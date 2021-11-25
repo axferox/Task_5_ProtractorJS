@@ -1,0 +1,21 @@
+{
+  "name": "task_5_protractorjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "beforeStart": "webdriver-manager start",
+    "test": "protractor ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axferox/Task_5_ProtractorJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/axferox/Task_5_ProtractorJS/issues"
+  },
+  "homepage": "https://github.com/axferox/Task_5_ProtractorJS#readme"
+}
