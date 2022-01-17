@@ -1,21 +1,28 @@
 {
-  "name": "task_5_protractorjs",
+  "name": "task_6_protractorjs",
   "version": "1.0.0",
-  "description": "",
+  "description": "dead framework task",
   "main": "index.js",
   "scripts": {
-    "beforeStart": "webdriver-manager start",
-    "test": "protractor ."
+    "test": "protractor ./test/config.js",
+    "pretest": "webdriver-manager update"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axferox/Task_5_ProtractorJS.git"
+    "url": "git+https://github.com/axferox/Task_6_ProtractorJS.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "axferox",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/axferox/Task_5_ProtractorJS/issues"
+    "url": "https://github.com/axferox/Task_6_ProtractorJS/issues"
   },
-  "homepage": "https://github.com/axferox/Task_5_ProtractorJS#readme"
+  "homepage": "https://github.com/axferox/Task_6_ProtractorJS#readme",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "jasmine-spec-reporter": "^7.0.0",
+    "protractor": "^7.0.0"
+  }
 }

@@ -1,18 +1,19 @@
-// spec.js
 describe('Login and restore password. ', function () {
 
   browser.ignoreSynchronization = true;
-  // browser.driver.manage().window().setSize(1920, 1080);
+  browser.driver.manage().window().setSize(1920, 1080);
   browser.driver.manage().timeouts().implicitlyWait(20000);
-  browser.waitForAngularEnabled(false);
+
   it('Should proceed to the https://www.indiegogo.com page', () => {
     browser.get('https://www.indiegogo.com');
     expect(browser.getTitle()).toEqual('Crowdfund Innovations & Support Entrepreneurs | Indiegogo');
 
   });
 
-  it('Should test that cookie consent checkbox are present and unticked by default', () => {
+  it('Should test that cookie consent checkbox are present and un ticked by default', () => {
     expect(element(by.id('CybotCookiebotDialogBodyContentCheckboxPersonalInformation')).isSelected().false);
+    browser.wait(ExpectedConditions
+    .elementToBeClickable(element(by.css('.CybotCookiebotDialogBodyContentLabelPersonalInformation'))),10000)
     element(by.css('.CybotCookiebotDialogBodyContentLabelPersonalInformation')).click();
     expect(element(by.id('CybotCookiebotDialogBodyContentCheckboxPersonalInformation')).isSelected().true);
   });
@@ -34,7 +35,7 @@ describe('Login and restore password. ', function () {
     element(by.xpath('//*[@id="vueHomepage"]/div[1]/div[3]/div/div[1]/div[2]/div/form/div[3]/button')).click();
   });
 
-  it('Should test that user logged in an user name is shown in the top right corenr of the screen', () => {
+  it('Should test that user logged in an user name is shown in the top right corner of the screen', () => {
     expect(element(by.xpath('//*[@id="vueHomepage"]/div[1]/div[3]/div/div[1]')).isPresent().false);
     expect(element(by.xpath('//*[@id="navigationHeader"]/div/div[2]/nav/div/div[2]/div/div[4]/a/span')).getText()).toEqual('ffnapp');
   });
@@ -45,7 +46,7 @@ describe('Login and restore password. ', function () {
     expect(element(by.xpath('//*[@id="navigationHeader"]/div/div[2]/nav/div/div[2]/div/div[4]/a/span')).isPresent().false);
   });
 
-  it('Should test that restore password link is present and user can procceed to the restore password form', () => {
+  it('Should test that restore password link is present and user can proceed to the restore password form', () => {
     element(by.css('.layoutHeader-logIn')).click();
     element(by.linkText('Forgot your password?')).click();
     element(by.name('account[email]')).sendKeys('ffnapp@ya.ru');
@@ -58,5 +59,4 @@ describe('Login and restore password. ', function () {
     element(by.xpath('/html/body/div[2]/div/div/div[3]/div/div/div[3]/form/input[5]')).click();
     expect(element(by.xpath('//*[@id="navigationHeader"]/div/div[2]/nav/div/div[2]/div/div[4]/a/span')).getText()).toEqual('ffnapp');
   });
-  
 });
