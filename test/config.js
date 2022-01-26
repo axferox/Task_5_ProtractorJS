@@ -1,26 +1,26 @@
 // conf.js
-const SpecReporter = require('jasmine-spec-reporter').SpecReporter
+const SpecReporter = require("jasmine-spec-reporter").SpecReporter;
 exports.config = {
-  framework: 'jasmine',
-  seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['**/*.spec.js'],
+  framework: "jasmine",
+  seleniumAddress: "http://localhost:4444/wd/hub",
+  specs: ["**/*.spec.js"],
   capabilities: {
-    'browserName': 'chrome'
+    "browserName": "chrome",
   },
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 600000
+    defaultTimeoutInterval: 600000,
   },
-  onPrepare () {
+  onPrepare() {
     jasmine.getEnv().addReporter(
-      new SpecReporter({
-        spec: {
-          displayStacktrace: true,
-        },
-        summary: {
-          displayDuration: false,
-        },
-      })
-    )
+        new SpecReporter({
+          spec: {
+            displayStacktrace: true,
+          },
+          summary: {
+            displayDuration: false,
+          },
+        }),
+    );
   },
-}
+};
