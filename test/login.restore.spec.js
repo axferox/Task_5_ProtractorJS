@@ -11,16 +11,19 @@ describe('Login and restore password. ', function () {
   });
 
   it('Should test that cookie consent checkbox are present and un ticked by default', () => {
-    expect(element(by.id('CybotCookiebotDialogBodyContentCheckboxPersonalInformation')).isSelected().false);
-    browser.wait(ExpectedConditions
-    .elementToBeClickable(element(by.css('.CybotCookiebotDialogBodyContentLabelPersonalInformation'))),10000)
-    element(by.css('.CybotCookiebotDialogBodyContentLabelPersonalInformation')).click();
-    expect(element(by.id('CybotCookiebotDialogBodyContentCheckboxPersonalInformation')).isSelected().true);
+    const checkbox = 'CybotCookiebotDialogBodyContentCheckboxPersonalInformation'
+    const checkboxLabel = '.CybotCookiebotDialogBodyContentLabelPersonalInformation'
+    expect(element(by.id(checkbox)).isSelected().false);
+    browser.wait(ExpectedConditions.elementToBeClickable(element(by.css(checkboxLabel))),10000)
+    element(by.css(checkboxLabel)).click();
+    expect(element(by.id(checkbox)).isSelected().true);
   });
 
   it('Should test that cookie consent can be submitted', () => {
-    element(by.id('CybotCookiebotDialogBodyButtonAccept')).click();
-    expect(element(by.name('CybotCookiebotDialog')).isPresent().false);
+    const acceptButton = 'CybotCookiebotDialogBodyButtonAccept'
+    const cookieDialog = 'CybotCookiebotDialog'
+    element(by.id(acceptButton)).click();
+    expect(element(by.name(cookieDialog)).isPresent().false);
   });
 
   it('Should test that login button is present and can be ticked', () => {
@@ -32,18 +35,19 @@ describe('Login and restore password. ', function () {
     expect(element(by.xpath('//*[@id="vueHomepage"]/div[1]/div[3]/div/div[1]')).isPresent().true);
     element(by.id('email')).sendKeys('ffnapp@ya.ru');
     element(by.id('password')).sendKeys('!1ffnApp');
-    element(by.xpath('//*[@id="vueHomepage"]/div[1]/div[3]/div/div[1]/div[2]/div/form/div[3]/button')).click();
+    element(by.xpath('//*[@id="vueHomepage"]/div[1]/div[2]/div/div[1]/div[2]/div/form/div[3]/button')).click();
+
   });
 
   it('Should test that user logged in an user name is shown in the top right corner of the screen', () => {
     expect(element(by.xpath('//*[@id="vueHomepage"]/div[1]/div[3]/div/div[1]')).isPresent().false);
-    expect(element(by.xpath('//*[@id="navigationHeader"]/div/div[2]/nav/div/div[2]/div/div[4]/a/span')).getText()).toEqual('ffnapp');
+    expect(element(by.xpath('//*[@id="iggAppLayout"]/div/div/div[1]/div/nav/div/div[2]/div/div[4]/a/span')).getText()).toEqual('ffnapp');
   });
 
   it('Should test that user can perform the log out', () => {
-    element(by.xpath('//*[@id="navigationHeader"]/div/div[2]/nav/div/div[2]/div/div[4]/a/span')).click();
-    element(by.xpath('//*[@id="navigationHeader"]/div/div[2]/nav/div/div[2]/div/div[5]/a[5]')).click();
-    expect(element(by.xpath('//*[@id="navigationHeader"]/div/div[2]/nav/div/div[2]/div/div[4]/a/span')).isPresent().false);
+    element(by.xpath('//*[@id="iggAppLayout"]/div/div/div[1]/div/nav/div/div[2]/div/div[4]/a/span')).click();
+    element(by.xpath('//*[@id="iggAppLayout"]/div/div/div[1]/div/nav/div/div[2]/div/div[5]/a[5]')).click();
+    expect(element(by.xpath('//*[@id="iggAppLayout"]/div/div/div[1]/div/nav/div/div[2]/div/div[4]/a/span')).isPresent().false);
   });
 
   it('Should test that restore password link is present and user can proceed to the restore password form', () => {
@@ -57,6 +61,6 @@ describe('Login and restore password. ', function () {
     element(by.xpath('/html/body/div[2]/div/div/div[3]/div/div/div[3]/form/input[3]')).sendKeys('ffnapp@ya.ru');
     element(by.xpath('/html/body/div[2]/div/div/div[3]/div/div/div[3]/form/input[4]')).sendKeys('!1ffnApp');
     element(by.xpath('/html/body/div[2]/div/div/div[3]/div/div/div[3]/form/input[5]')).click();
-    expect(element(by.xpath('//*[@id="navigationHeader"]/div/div[2]/nav/div/div[2]/div/div[4]/a/span')).getText()).toEqual('ffnapp');
+    expect(element(by.xpath('//*[@id="iggAppLayout"]/div/div/div[1]/div/nav/div/div[2]/div/div[4]/a/span')).getText()).toEqual('ffnapp');
   });
 });
